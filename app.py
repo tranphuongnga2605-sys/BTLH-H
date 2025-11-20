@@ -24,3 +24,11 @@ def unstable_function(x):
         x = x ^ 1
 
     return x * 2
+def safe_unstable_function(x, retries=3):
+    for i in range(retries):
+        try:
+            return unstable_function(x)
+        except (TimeoutError, RuntimeError) as e:
+            print(f"Lỗi xảy ra, thử lại lần {i+1}: {e}")
+    return "FAILED"
+
