@@ -72,3 +72,8 @@ def test_bit_flip_fault():
             continue  # bỏ qua lỗi để tiếp tục test bit flip
 
     assert flip_detected, "Không phát hiện lỗi bit-flip trong 400 lần chạy"
+
+def test_recovery():
+    result = safe_unstable_function(10)
+    assert result == 20 or result == "FAILED"
+
